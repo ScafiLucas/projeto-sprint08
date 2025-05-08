@@ -34,6 +34,9 @@ class TestUrbanRoutes:
         to_field.clear()
         to_field.send_keys(data.ADDRESS_TO)
 
+        assert from_field.get_attribute("value") == data.ADDRESS_FROM
+        assert to_field.get_attribute("value") == data.ADDRESS_TO
+
         call_taxi_button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Call a taxi")]')
         assert call_taxi_button is not None
 
