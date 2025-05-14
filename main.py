@@ -1,12 +1,6 @@
 import data  # importa os dados de teste do arquivo data.py
 import helpers  # importa a função is_url_reachable para verificar o servidor
 
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
-
 class TestUrbanRoutes:
 
     driver = None
