@@ -1,5 +1,16 @@
-import data  # importa os dados de teste do arquivo data.py
-import helpers  # importa a função is_url_reachable para verificar o servidor
+import time
+
+from selenium.webdriver.common.by import By
+
+import data
+import helpers
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
+from page import UrbanRoutesPage
+
 
 class TestUrbanRoutes:
 
@@ -7,15 +18,20 @@ class TestUrbanRoutes:
 
     @classmethod
     def setup_class(cls):
-        if helpers.is_url_reachable(data.URBAN_ROUTES_URL):
-            print("Conectado ao servidor Urban Routes")
-        else:
-            print("Não foi possível conectar ao Urban Routes. Verifique se o servidor está ligado e ainda em execução.")
+        # Configura o Chrome com logging para capturar o código do SMS
+        options = Options()
+        options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
+        cls.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+        cls.driver.implicitly_wait(5)
 
     def test_set_route(self):
-        # Adicionar em S8
-        print("Função criada para selecionar uma rota")
-        pass
+        self.driver.get(data.URBAN_ROUTES_URL)
+        routes_page = UrbanRoutesPage(self.driver)
+        address_from = data.ADDRESS_FROM
+        address_to = data.ADDRESS_TO
+        routes_page.set_route(address_from, address_to)
+        assert routes_page.get_from() == address_from
+        assert routes_page.get_to() == address_to
 
     def test_select_plan(self):
         # Adicionar em S8

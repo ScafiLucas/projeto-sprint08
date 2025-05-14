@@ -1,7 +1,7 @@
 # data.py
 
 # URL do servidor Urban Routes
-URBAN_ROUTES_URL = ''
+URBAN_ROUTES_URL = 'https://cnt-89b9a505-d156-45c7-8207-5176fd51c46b.containerhub.tripleten-services.com?lng=pt'
 
 # Dados de teste utilizados nos formulários
 ADDRESS_FROM = 'East 2nd Street, 601'
