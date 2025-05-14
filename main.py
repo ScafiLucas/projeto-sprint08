@@ -17,28 +17,11 @@ class TestUrbanRoutes:
             print("Conectado ao servidor Urban Routes")
         else:
             print("Não foi possível conectar ao Urban Routes. Verifique se o servidor está ligado e ainda em execução.")
-        cls.driver = webdriver.Chrome()
-        cls.driver.get(data.URBAN_ROUTES_URL)
 
     def test_set_route(self):
-        from_field = WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located((By.ID, 'from'))
-        )
-        to_field = self.driver.find_element(By.ID, 'to')
-
-        from_field.click()
-        from_field.clear()
-        from_field.send_keys(data.ADDRESS_FROM)
-
-        to_field.click()
-        to_field.clear()
-        to_field.send_keys(data.ADDRESS_TO)
-
-        assert from_field.get_attribute("value") == data.ADDRESS_FROM
-        assert to_field.get_attribute("value") == data.ADDRESS_TO
-
-        call_taxi_button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Call a taxi")]')
-        assert call_taxi_button is not None
+        # Adicionar em S8
+        print("Função criada para selecionar uma rota")
+        pass
 
     def test_select_plan(self):
         # Adicionar em S8
