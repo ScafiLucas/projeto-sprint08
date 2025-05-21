@@ -7,7 +7,6 @@ from pages import UrbanRoutesPage
 
 
 class TestUrbanRoutes:
-    driver = None
 
     @classmethod
     def setup_class(cls):

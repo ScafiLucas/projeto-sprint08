@@ -131,7 +131,6 @@ class UrbanRoutesPage:
             expected_conditions.presence_of_element_located(locator)
         )
 
-
     def _wait_for_visible(self, locator, timeout=5):
         # Aguarda até que o elemento especificado pelo locator esteja visível na página.
         # Utiliza o WebDriverWait para esperar até que a condição de visibilidade seja atendida.
@@ -139,36 +138,30 @@ class UrbanRoutesPage:
             expected_conditions.visibility_of_element_located(locator)
         )
 
-
     def set_from(self, from_address):
         # Preenche o campo de endereço de origem com o valor fornecido.
         # Aguarda até que o campo esteja visível antes de enviar o texto.
         self._wait_for_visible(self.from_field).send_keys(from_address)
-
 
     def set_to(self, to_address):
         # Preenche o campo de endereço de destino com o valor fornecido.
         # Aguarda até que o campo esteja visível antes de enviar o texto.
         self._wait_for_visible(self.to_field).send_keys(to_address)
 
-
     def get_from(self):
         # Retorna o valor atual do campo de endereço de origem.
         # Aguarda até que o campo esteja presente no DOM antes de obter o valor.
         return self._wait_for(self.from_field).get_property('value')
-
 
     def get_to(self):
         # Retorna o valor atual do campo de endereço de destino.
         # Aguarda até que o campo esteja presente no DOM antes de obter o valor.
         return self._wait_for(self.to_field).get_property('value')
 
-
     def click_call_taxi_button(self):
         # Clica no botão "Chamar um táxi".
         # Aguarda até que o botão esteja visível antes de realizar a ação de clique.
         self._wait_for_visible(self.call_taxi_button).click()
-
 
     def set_route(self, from_address, to_address):
         # Configura a rota preenchendo os endereços de origem e destino e clicando no botão de chamada.
@@ -179,7 +172,6 @@ class UrbanRoutesPage:
         # Por fim, clica no botão para chamar o táxi.
         self.click_call_taxi_button()
 
-
     def select_supportive_plan(self):
         # Seleciona o plano de suporte "Comfort".
         # Aguarda até que o cartão do plano esteja visível.
@@ -189,12 +181,10 @@ class UrbanRoutesPage:
         # Clica no cartão para selecionar o plano.
         card.click()
 
-
     def get_current_selected_plan(self):
         # Retorna o nome do plano atualmente selecionado.
         # Aguarda até que o elemento do plano ativo esteja presente no DOM antes de obter o texto.
         return self._wait_for(self.active_plan_card).text
-
 
     def set_phone(self, number):
         # Preenche o número de telefone no formulário e confirma o código de verificação.
@@ -211,12 +201,10 @@ class UrbanRoutesPage:
         # Clica no botão "Confirmar" para finalizar o processo.
         self._wait_for(self.phone_number_confirm_button).click()
 
-
     def get_phone(self):
         # Retorna o número de telefone configurado.
         # Aguarda até que o elemento exibindo o número esteja presente no DOM antes de obter o texto.
         return self._wait_for(self.phone_number).text
-
 
     def set_card(self, card_number, code):
         # Preenche os dados do cartão de crédito e confirma.
@@ -235,24 +223,20 @@ class UrbanRoutesPage:
         # Fecha o seletor de método de pagamento.
         self.driver.find_element(*self.close_button_payment_method).click()
 
-
     def get_current_payment_method(self):
         # Retorna o método de pagamento atualmente selecionado.
         # Aguarda até que o elemento exibindo o método esteja presente no DOM antes de obter o texto.
         return self._wait_for(self.current_payment_method).text
-
 
     def set_message_for_driver(self, message):
         # Preenche o campo de mensagem para o motorista com o texto fornecido.
         # Aguarda até que o campo esteja visível antes de enviar o texto.
         self._wait_for(self.message_for_driver).send_keys(message)
 
-
     def get_message_for_driver(self):
         # Retorna a mensagem configurada para o motorista.
         # Aguarda até que o campo esteja presente no DOM antes de obter o valor.
         return self._wait_for(self.message_for_driver).get_property('value')
-
 
     def click_blanket_and_handkerchiefs_option(self):
         # Seleciona a opção de cobertor e lenços.
@@ -265,7 +249,6 @@ class UrbanRoutesPage:
         # Verifica se a opção foi marcada corretamente.
         self.get_blanket_and_handkerchiefs_option_checked()
 
-
     def get_blanket_and_handkerchiefs_option_checked(self):
         # Verifica se a opção de cobertor e lenços está marcada.
         # Aguarda até que os inputs dos interruptores estejam presentes no DOM.
@@ -274,7 +257,6 @@ class UrbanRoutesPage:
         )
         # Retorna o estado do primeiro interruptor (marcado ou não).
         return switches[0].get_property('checked')
-
 
     def add_ice_cream(self, amount: int):
         # Adiciona a quantidade especificada de sorvetes ao pedido.
@@ -288,7 +270,6 @@ class UrbanRoutesPage:
         for _ in range(amount):
             option_add_controls[0].click()
 
-
     def get_amount_of_ice_cream(self):
         # Retorna a quantidade de sorvetes adicionada ao pedido.
         # Aguarda até que o elemento exibindo a quantidade esteja presente no DOM.
@@ -296,18 +277,15 @@ class UrbanRoutesPage:
             expected_conditions.presence_of_all_elements_located(self.amount_of_enumerable_option)
         )[0].text)
 
-
     def click_order_taxi_buton(self):
         # Clica no botão para pedir um táxi.
         # Aguarda até que o botão esteja presente no DOM antes de realizar a ação de clique.
         self._wait_for(self.order_car_button).click()
 
-
     def wait_order_taxi_popup(self):
         # Aguarda até que o popup de pedido de táxi apareça.
         # Utiliza o método _wait_for_visible para garantir que o popup esteja visível.
         self._wait_for_visible(self.order_popup)
-
 
     def wait_driver_info(self):
         # Aguarda até que as informações do motorista estejam disponíveis.
@@ -319,7 +297,6 @@ class UrbanRoutesPage:
         self._wait_for(self.order_driver_rating)
         self._wait_for(self.order_driver_image)
         self._wait_for(self.order_driver_name)
-
 
     def get_driver_info(self):
         # Retorna as informações do motorista (nome, avaliação e imagem).
